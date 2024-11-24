@@ -1,0 +1,381 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Baskervville+SC&family=Gamja+Flower&family=Leckerli+One&family=Marck+Script&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  line-height: 1.5;
+  background: linear-gradient(to right, #f7f5ff, #e1d3f8);
+}
+
+a,
+button,
+details,
+input[type=button],
+input[type=checkbox],
+input[type=file],
+input[type=image],
+input[type=radio],
+input[type=range],
+input[type=reset],
+input[type=submit],
+label,
+select {
+  cursor: pointer;
+  text-transform: lowercase;
+}
+
+a {
+  text-decoration: none;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+embed,
+iframe,
+img,
+object,
+picture,
+svg,
+video {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.container {
+  height: auto;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  height: 6.25rem;
+  background: none;
+}
+header .title {
+  font-size: 2.5rem;
+  color: black;
+  font-family: "Arial", sans-serif;
+  letter-spacing: 0.0625pxrem;
+  text-align: center;
+  margin-top: 1.875rem;
+}
+
+#budget-tracker-container {
+  width: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 250px);
+  gap: 16px;
+  font-size: 1.25rem;
+  color: black;
+  font-family: "Poppins", serif;
+  letter-spacing: 0.0625pxrem;
+  flex-wrap: wrap;
+}
+#budget-tracker-container .card {
+  background-color: #e4f4e3;
+  min-height: 100%;
+  height: auto;
+  width: auto;
+  border-radius: 25px;
+  position: relative;
+  border: 1px rgba(0, 0, 0, 0.5) solid;
+  margin: 1.25rem;
+  overflow: hidden;
+}
+#budget-tracker-container h3 {
+  font-size: 1.25rem;
+  color: black;
+  font-family: "Poppins", serif;
+  letter-spacing: 0.0625pxrem;
+}
+#budget-tracker-container h4 {
+  font-size: 1rem;
+  color: black;
+  font-family: "Poppins", serif;
+  letter-spacing: 0.0625pxrem;
+}
+#budget-tracker-container h3,
+#budget-tracker-container h4 {
+  width: 100%;
+  background-color: #c5dbc4;
+  padding: 0.9375rem;
+  height: 3.125rem;
+}
+#budget-tracker-container .budget {
+  order: -1;
+  overflow: hidden;
+  grid-row: 1/2;
+}
+#budget-tracker-container .budget form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  align-content: start;
+  height: 80%;
+  width: 100%;
+  padding: 1.25rem;
+  font-size: 1.0625rem;
+  color: black;
+  font-family: "Poppins", serif;
+  letter-spacing: 0.0625pxrem;
+}
+#budget-tracker-container .budget form select {
+  outline: none;
+  padding: 0 0.625rem;
+  background-color: #c5dbc4;
+  border-radius: 0.125rem;
+}
+#budget-tracker-container .budget form #budget-inputs div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  border-bottom: 1px solid #c5dbc4;
+}
+#budget-tracker-container .budget form #budget-inputs div input {
+  font-size: 0.75pxrem;
+  color: black;
+  font-family: "Poppins", serif;
+  letter-spacing: 0.0625pxrem;
+  margin-left: 10px;
+  border: none;
+  border-left: 1px solid #c5dbc4;
+  padding: 10px;
+  background: none;
+  outline: none;
+}
+#budget-tracker-container .budget form #budget-inputs div input::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.5);
+  text-transform: lowercase;
+}
+#budget-tracker-container .budget form #budget-inputs div input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+  text-transform: lowercase;
+}
+#budget-tracker-container .budget form button {
+  background-color: #c5dbc4;
+  border: 1px solid #222222;
+  border-radius: 8px;
+  color: #222222;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  outline: none;
+  padding: 0.125rem 1.875rem;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 400;
+}
+#budget-tracker-container .budget form button:focus-visible {
+  box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
+  transition: box-shadow 0.2s;
+}
+#budget-tracker-container .budget form button:active {
+  background-color: #e1d3f8;
+  transform: scale(0.96);
+}
+#budget-tracker-container .tracker {
+  grid-row: 2/span 2;
+  overflow-y: scroll;
+}
+#budget-tracker-container .tracker-statistics {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(2, 0.5fr);
+  gap: 16px;
+  height: 90%;
+}
+#budget-tracker-container .tracker-statistics-graph {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+  width: 100%;
+}
+#budget-tracker-container .tracker-statistics-percent {
+  height: 60%;
+}
+#budget-tracker-container .tracker-statistics-percent-grid {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 0.5fr);
+  gap: 16px;
+  gap: 0;
+}
+#budget-tracker-container .tracker-statistics-percent-grid div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  border: 1px solid #c5dbc4;
+}
+#budget-tracker-container .income {
+  grid-row: 1/span 3;
+  overflow-y: scroll;
+}
+#budget-tracker-container .income-table {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  align-content: start;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(auto, 0.5fr);
+  gap: 16px;
+  text-align: center;
+  min-height: 87.5%;
+  gap: 0;
+}
+#budget-tracker-container .income-table tr {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(auto, 0.5fr);
+  gap: 16px;
+  width: 100%;
+  gap: 0;
+  border: 1px solid #c5dbc4;
+}
+#budget-tracker-container .income-table tr th {
+  font-size: 1.125rem;
+  color: black;
+  font-family: "Poppins", serif;
+  letter-spacing: 0.0625pxrem;
+  background-color: rgba(176, 181, 237, 0.5);
+}
+#budget-tracker-container .income-table tr td {
+  text-transform: lowercase;
+  font-size: 1.0625rem;
+  color: black;
+  font-family: "Poppins", serif;
+  letter-spacing: 0.0625pxrem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#budget-tracker-container .income-table-del {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+#budget-tracker-container .expense {
+  grid-row: 1/span 3;
+  overflow-y: scroll;
+}
+#budget-tracker-container .expense-table {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  align-content: start;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(auto, 0.5fr);
+  gap: 16px;
+  text-align: center;
+  min-height: 87.5%;
+  gap: 0;
+}
+#budget-tracker-container .expense-table tr {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(auto, 0.5fr);
+  gap: 16px;
+  width: 100%;
+  gap: 0;
+  border: 1px solid #c5dbc4;
+}
+#budget-tracker-container .expense-table tr th {
+  font-size: 1.125rem;
+  color: black;
+  font-family: "Poppins", serif;
+  letter-spacing: 0.0625pxrem;
+  background-color: rgba(176, 181, 237, 0.5);
+}
+#budget-tracker-container .expense-table tr td {
+  text-transform: lowercase;
+  font-size: 1.0625rem;
+  color: black;
+  font-family: "Poppins", serif;
+  letter-spacing: 0.0625pxrem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#budget-tracker-container .expense-table-del {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+#budget-tracker-container .income-title,
+#budget-tracker-container .expense-title {
+  position: sticky;
+  top: 0;
+}
+#budget-tracker-container .income-total,
+#budget-tracker-container .expense-total {
+  position: sticky;
+  bottom: 0;
+}
+
+@media (max-width: 768px) {
+  #budget-tracker-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    display: inline-block;
+  }
+  #budget-tracker-container h3,
+  #budget-tracker-container h4 {
+    text-align: center;
+    height: auto;
+  }
+  #budget-tracker-container .budget form {
+    padding: 0.3125rem;
+    flex-wrap: wrap;
+    font-size: 0.8125rem;
+    color: black;
+    font-family: "Poppins", serif;
+    letter-spacing: 0.0625pxrem;
+  }
+  #budget-tracker-container .budget form input {
+    width: 50%;
+  }
+}/*# sourceMappingURL=main.css.map */

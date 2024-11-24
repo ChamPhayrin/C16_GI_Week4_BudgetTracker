@@ -1,0 +1,248 @@
+// Linking to placeholder SCSS folders
+@use './abstracts'as *;
+@use './components/'as *;
+
+
+// Defaults properties
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  line-height: 1.5;
+  @include linear-gradient($background-clr, $highlight-clr);
+}
+
+a,
+button,
+details,
+input[type=button],
+input[type=checkbox],
+input[type=file],
+input[type=image],
+input[type=radio],
+input[type=range],
+input[type=reset],
+input[type=submit],
+label,
+select {
+  cursor: pointer;
+  text-transform: lowercase;
+}
+
+a {
+  text-decoration: none;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+embed,
+iframe,
+img,
+object,
+picture,
+svg,
+video {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.container {
+  height: auto;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  @include flex-box(column);
+}
+
+
+// Header bar
+header {
+  @include flex-box;
+  width: 100%;
+  height: toRem(100);
+  background: none;
+
+  .title {
+    @include primary-text(40, $black-clr, $arial);
+    text-align: center;
+    margin-top: toRem(30);
+  }
+}
+
+#budget-tracker-container {
+  width: auto;
+  @include grid(3, 1fr, 3, 250px);
+  @include primary-text(20);
+  flex-wrap: wrap;
+
+
+  .card {
+    background-color: $secondary-clr;
+    min-height: 100%;
+    height: auto;
+    width: auto;
+    border-radius: 25px;
+    position: relative;
+    border: 1px rgba($black-clr, .5) solid;
+    margin: toRem(20);
+    overflow: hidden;
+  }
+
+  h3 {
+    @include primary-text(20, $black-clr);
+  }
+
+  h4 {
+    @include primary-text(16, $black-clr);
+  }
+
+  h3,
+  h4 {
+    width: 100%;
+    background-color: $terciary-clr;
+    padding: toRem(15);
+    height: toRem(50);
+  }
+
+
+
+
+  .budget {
+    order: -1;
+    overflow: hidden;
+    grid-row: 1 / 2;
+
+    form {
+      @include flex-box(column, space-between, start);
+      height: 80%;
+      width: 100%;
+      padding: toRem(20);
+      @include primary-text(17);
+
+      select {
+        outline: none;
+        padding: 0 toRem(10);
+        background-color: $terciary-clr;
+        border-radius: toRem(2);
+      }
+
+      #budget-inputs {
+        div {
+          @include flex-box(row, space-between, center);
+          width: 100%;
+          border-bottom: 1px solid $terciary-clr;
+
+          input {
+            @include primary-text;
+            margin-left: 10px;
+            border: none;
+            border-left: 1px solid $terciary-clr;
+            padding: 10px;
+            background: none;
+            outline: none;
+
+            &::placeholder {
+              color: rgba($black-clr, .5);
+              text-transform: lowercase;
+            }
+          }
+        }
+      }
+
+      button {
+        @include button;
+      }
+    }
+  }
+
+
+  .tracker {
+    grid-row: 2 /span 2;
+    overflow-y: scroll;
+
+    &-statistics {
+      @include grid(1, 1fr, 2);
+      height: 90%;
+
+      &-graph {
+        text-align: center;
+        @include flex-box;
+        height: 100%;
+        width: 100%;
+      }
+
+      &-percent {
+        height: 60%;
+        &-grid {
+          height: 100%;
+          @include grid(2, 1fr, 2);
+          gap: 0;
+
+          div {
+            @include flex-box;
+            border: 1px solid $terciary-clr;
+          }
+        }
+      }
+    }
+  }
+
+  .income {
+    @include table;
+  }
+
+  .expense {
+    @include table;
+  }
+
+  .income,
+  .expense {
+    &-title {
+      position: sticky;
+      top: 0;
+    }
+
+    &-total {
+      position: sticky;
+      bottom: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #budget-tracker-container {
+    @include flex-box(column);
+
+    display: inline-block;
+
+    h3,
+    h4 {
+      text-align: center;
+      height: auto;
+    }
+    .budget{
+      form{
+        padding: toRem(5);
+        flex-wrap: wrap;
+        @include primary-text(13);
+        input{
+          width: 50%;
+        }
+      }
+    }
+  }
+
+}

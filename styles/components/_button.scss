@@ -1,0 +1,28 @@
+@use '../abstracts'as *;
+
+
+@mixin button{
+    background-color: $terciary-clr;
+    border: 1px solid #222222;
+    border-radius: 8px;
+    color: #222222;
+    cursor: pointer;
+    font-size: toRem(16);
+    font-weight: 400;
+    line-height: toRem(20);
+    outline: none;
+    padding: toRem(2) toRem(30);
+    text-align: center;
+    text-decoration: none;
+    font-weight: 400;
+
+    &:focus-visible {
+      box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
+      transition: box-shadow .2s;
+    }
+
+    &:active {
+      background-color: $highlight-clr;
+      transform: scale(.96);
+    }
+}

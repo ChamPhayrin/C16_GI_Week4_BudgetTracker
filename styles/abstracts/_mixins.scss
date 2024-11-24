@@ -1,0 +1,68 @@
+@use './variables'as v;
+@use './functions'as *;
+
+
+@mixin flex-box($direction:row, $content: center, $align:center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $content;
+  align-items: $align;
+  align-content: $align;
+}
+
+@mixin grid($amtColumn: auto, $spacing: 1fr, $amtRow: 2, $spacing2: .5fr, $gap: 16px) {
+  display: grid;
+  grid-template-columns: repeat($amtColumn, $spacing);
+  grid-template-rows: repeat($amtRow, $spacing2);
+  gap: $gap;
+}
+
+@mixin primary-text($fontSize: 12px, $clr: v.$black-clr, $family: v.$poppins) {
+  font-size: toRem($fontSize);
+  color: $clr;
+  font-family: $family;
+  letter-spacing: toRem(1px);
+}
+
+@mixin linear-gradient($first: v.$white-clr, $second: v.$black-clr) {
+  background: linear-gradient(to right, $first, $second);
+}
+
+@mixin table() {
+  grid-row: 1 /span 3;
+  overflow-y: scroll;
+
+  &-table {
+    @include flex-box(column, start, start);
+    @include grid(1, 1fr, auto);
+    text-align: center;
+    min-height: 87.5%;
+    gap: 0;
+
+    tr {
+      @include grid(3, 1fr, auto);
+      width: 100%;
+      gap: 0;
+      border: 1px solid v.$terciary-clr;
+
+      th {
+        @include primary-text(18);
+        background-color: rgba(v.$primary-clr, .5);
+      }
+
+      td {
+        text-transform: lowercase;
+        @include primary-text(17);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    &-del {
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+  }
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="styles/main.css" />
+		<title>Budget Tracker</title>
+	</head>
+	<body>
+		<header>
+			<h1 class="title">Monthly Budget Tracker</h1>
+		</header>
+		<main class="container">
+			<div id="budget-tracker-container">
+				<section class="budget card">
+					<h3 class="budget-title">Input Expenses/Income</h3>
+
+					<form id="budget-form">
+						<div>
+							<label for="budget-select">Select type:</label>
+							<select name="budget-select" id="budget-select">
+								<option value="income">Income</option>
+								<option value="expense">Expense</option>
+							</select>
+						</div>
+
+						<div id="budget-inputs">
+							<div>
+								<label for="income-expense-name">Name:</label>
+								<input
+									type="text"
+									name="income-expense-name"
+									id="income-expense-name"
+									placeholder="Anniversery date"
+								/>
+							</div>
+							<div>
+								<label for="input-amount">Amount:</label>
+								<input
+									type="number"
+									name="input-amount"
+									id="input-amount"
+									placeholder="-$200"
+								/>
+							</div>
+						</div>
+
+						<button type="submit" id="budget-submit-button">submit</button>
+					</form>
+				</section>
+
+				<section class="tracker card">
+					<h3 class="tracker-title">Track Budget</h3>
+					<div class="tracker-statistics">
+						<div class="tracker-statistics-graph">
+              <canvas id="myChart"></canvas>
+						</div>
+						<div class="tracker-statistics-percent">
+							<h4>Reccomended Saving Percents:</h4>
+							<div class="tracker-statistics-percent-grid" id="tracker-statistics-percent-grid">
+								<div>
+									<p>15% = 0</p>
+								</div>
+								<div>
+									<p>20% = 0</p>
+								</div>
+								<div>
+									<p>30% = 0</p>
+								</div>
+								<div>
+									<p>40% = 0</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="income card">
+					<h3 class="income-title">Income</h3>
+
+					<table class="income-table" id="income-table">
+						<tr>
+							<th>Name</th>
+							<th>Amount</th>
+							<th>
+								<!-- empty -->
+							</th>
+						</tr>
+
+            <tbody id="income-tbody">
+            </tbody>
+					</table>
+					<div class="income-total">
+						<h4 id="income-total">Total: $$$</h4>
+					</div>
+				</section>
+
+				<section class="expense card">
+					<h3 class="expense-title">Expense</h3>
+
+					<table class="expense-table" id="expense-table">
+						<tr>
+							<th>Name</th>
+							<th>Amount</th>
+							<th>
+								<!-- empty -->
+							</th>
+						</tr>
+            
+            <tbody id="expense-tbody">
+            </tbody>
+
+					</table>
+
+					<div class="expense-total">
+						<h4 id="expense-total">Total: $$$</h4>
+					</div>
+				</section>
+			</div>
+		</main>
+
+		<footer>
+
+    </footer>
+    <!-- script tags -->
+    <script src="./js/form.js" type="module"></script>
+      <!-- chart.js CDM -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	</body>
+</html>

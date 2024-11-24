@@ -1,0 +1,6 @@
+
+// Turning px sizing into rem for text responsiveness
+@function toRem($px) {
+  $remValue: calc($px / 16) + rem; 
+  @return $remValue;
+}
