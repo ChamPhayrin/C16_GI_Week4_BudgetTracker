@@ -6,6 +6,8 @@ const submitBtn = document.getElementById("budget-submit-button");
 const budgetForm = document.getElementById("budget-form");
 const incomeTableBody = document.getElementById("income-tbody");
 const expenseTableBody = document.getElementById("expense-tbody");
+let chartInstance = null; 
+
 
 class Budget {
 	//budget class
@@ -108,16 +110,42 @@ class Budget {
 				40% = $${percents.forty}
 			</p>
 		</div>`;
+
+		this.updateChart();
 	}
 
+	// Update the chart with the latest data
+	updateChart() {
+    const ctx = document.getElementById('myChart');
+
+    // Check if chartInstance exists
+    if (chartInstance) {
+      chartInstance.data.datasets[0].data = [this.calcIncome(), this.calcExpense(), this.calcBudget()];
+      chartInstance.update();  // update the chart with new data
+    } else {
+      // creates new chart
+      chartInstance = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: ['Income', 'Expense', 'Budget'],
+          datasets: [{
+            label: 'Total Amount',
+            data: [this.calcIncome(), this.calcExpense(), this.calcBudget()],
+            borderWidth: 1
+          }]
+        }
+      });
+    }
+  }
+
 	removeIncomeItem(index) {
-		this.incomeList.splice(index, 1);
+		this.incomeList.splice(index, 1); //removes the income item at that index
 		this.saveToLocalStorage();
 		this.renderTable();
 	}
 
 	removeExpenseItem(index) {
-		this.expenseList.splice(index, 1);
+		this.expenseList.splice(index, 1); //removes the expense item at that index
 		this.saveToLocalStorage();
 		this.renderTable();
 	}
@@ -154,7 +182,7 @@ class Budget {
 			return percent
 		}else{
 			let percent = {
-				fifteen: (parseInt(this.calcBudget()) * 0.15).toFixed(2),
+				fifteen: (parseInt(this.calcBudget()) * 0.15).toFixed(2), //allowing only two decimals to show
 				twenty: (parseInt(this.calcBudget()) * 0.2).toFixed(2),
 				thirty: (parseInt(this.calcBudget()) * 0.3).toFixed(2),
 				forty: (parseInt(this.calcBudget()) * 0.4).toFixed(2),
@@ -186,31 +214,20 @@ budgetForm.addEventListener("submit", (e) => {
 		return;
 	}
 
+	    // Check if the name already exists in either income or expense list
+			const nameExistsInIncome = budget.incomeList.some(item => item.name === nameValue);
+			const nameExistsInExpense = budget.expenseList.some(item => item.name === nameValue);
+	
+			if (nameExistsInIncome || nameExistsInExpense) {
+					alert("cannot repeat names");
+					return;
+			}
+
 	let formValues = {
 		name: nameValue,
 		amount: amtValue,
 	};
 
 	budget.appendBudget(formValues);
-	budget.renderTable();
+	budget.renderTable(); // Re-render the table and update chart
 });
-
-
-
-
-
-// CHART
-const ctx = document.getElementById('myChart');
-
-
-  new Chart(ctx, {
-    type: 'pie',
-    data: {
-      labels: ['Income', 'Expense', 'Budget'],
-      datasets: [{
-        label: 'Total Amount',
-        data: [budget.calcIncome(), budget.calcExpense(), budget.calcBudget()],
-        borderWidth: 1
-      }]
-    }
-  });
